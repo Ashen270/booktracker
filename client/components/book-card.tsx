@@ -20,14 +20,14 @@ export default function BookCard({ id, title, author, publishedYear, genre, onDe
 
 
   const genreColors: Record<string, string> = {
-    "Science Fiction": "#E3F2FD", 
-    Fantasy: "#F3E5F5",           
-    Mystery: "#FFF9C4",           
-    Romance: "#FCE4EC",           
-    Horror: "#FFEBEE",            
-    "Non-Fiction": "#E8F5E9",     
-    Historical: "#FBE9E7",        
-    default: "#F5F5F5",           
+    "Science Fiction": "#E3F2FD",
+    Fantasy: "#F3E5F5",
+    Mystery: "#FFF9C4",
+    Romance: "#FCE4EC",
+    Horror: "#FFEBEE",
+    "Non-Fiction": "#E8F5E9",
+    Historical: "#FBE9E7",
+    default: "#F5F5F5",
   };
 
   const backgroundColor = genreColors[genre] || genreColors.default;
@@ -35,6 +35,7 @@ export default function BookCard({ id, title, author, publishedYear, genre, onDe
   return (
     <Card
       sx={{
+        width: "100%",
         height: "100%",
         display: "flex",
         flexDirection: "column",

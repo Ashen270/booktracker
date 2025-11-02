@@ -72,7 +72,7 @@ export default function BookList({ books, onBooksChange }: BookListProps) {
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={3}>
                     {paginatedBooks.map((book) => (
-                        <Grid item xs={12} sm={6} md={4} key={book.id}>
+                        <Grid key={book.id}>
                             <BookCard
                                 id={book.id}
                                 title={book.title}
