@@ -25,6 +25,36 @@
 
 
 
+## 🛠️ Getting Started
+
+### Prerequisites
+
+Node.js 18+
+npm or yarn or pnpm
+
+### Installation
+
+Clone the repository
+git clone https://github.com/Ashen270/booktracker.git
+cd booktracker/client
+Install dependencies
+
+npm install
+# or
+yarn install
+# or
+pnpm install
+
+### Start the development server
+
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+
+
+
 
 
 
