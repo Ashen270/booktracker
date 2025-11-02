@@ -1,4 +1,4 @@
-const GRAPHQL_ENDPOINT = "http://localhost:4000/graphql"
+const GRAPHQL_ENDPOINT = `${process.env.NEXT_PUBLIC_API_URL}/graphql`
 
 export async function executeGraphQL<T>(query: string, variables?: Record<string, any>): Promise<T> {
   const response = await fetch(GRAPHQL_ENDPOINT, {

@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
 import { useEffect } from "react"
 import { Box, Button, Typography, Container, Stack, CircularProgress } from "@mui/material"
-import BookIcon from "@mui/icons-material/Book"
+import Image from "next/image"
+
 
 export default function Home() {
   const { user, isLoading } = useAuth()
@@ -42,23 +43,26 @@ export default function Home() {
     >
       <Container maxWidth="sm">
         <Box sx={{ textAlign: "center" }}>
-          <BookIcon sx={{ fontSize: 80, color: "primary.main", mb: 2 }} />
-          <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+          <Image
+            src="/booktrackerlogo.png"
+            alt="BookTracker Logo"
+            width={256}
+            height={256}
+            style={{  display: "block", margin: "0 auto 16px"}}
+          />
+          <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
             Book Management System
           </Typography>
-          <Typography variant="h6" color="textSecondary" gutterBottom sx={{ mb: 4 }}>
-            Manage and organize your book collection
-          </Typography>
-          <Typography variant="body1" color="textSecondary" sx={{ mb: 4 }}>
+          <Typography variant="subtitle2" color="textSecondary" sx={{ mb: 4 }}>
             Welcome to your personal book management system. Create an account or log in to get started.
           </Typography>
 
           <Stack direction="row" spacing={2} justifyContent="center">
-            <Button variant="contained" size="large" onClick={() => router.push("/auth/login")}>
+            <Button variant="contained" size="large" onClick={() => router.push("/login")}>
               Login
             </Button>
-            <Button variant="outlined" size="large" onClick={() => router.push("/auth/register")}>
-              Register
+            <Button variant="outlined" size="large" onClick={() => router.push("/signup")}>
+              Sign Up
             </Button>
           </Stack>
         </Box>

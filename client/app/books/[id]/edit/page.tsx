@@ -42,7 +42,7 @@ export default function EditBookPage() {
     setError("")
 
     try {
-      const response = await fetch("http://localhost:4000/graphql", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

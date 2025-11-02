@@ -2,9 +2,22 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { Box, TextField, Button, Card, CardContent, Typography, Alert, CircularProgress, Stack } from "@mui/material"
+import {
+  Box,
+  TextField,
+  Button, 
+  Card,
+  FormControl,
+  Select,
+  MenuItem,
+  CardContent,
+  Typography,
+  Alert,
+  CircularProgress,
+  Stack
+} from "@mui/material"
 import { useRouter } from "next/navigation"
-import SaveIcon from "@mui/icons-material/Save"
+import AddIcon from '@mui/icons-material/Add';
 import CancelIcon from "@mui/icons-material/Cancel"
 
 interface Book {
@@ -85,7 +98,7 @@ export default function BookForm({ book, userId, onSuccess }: BookFormProps) {
         ? { id: book.id, title, author, publishedYear: year, genre }
         : { userId, title, author, publishedYear: year, genre }
 
-      const response = await fetch("http://localhost:4000/graphql", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query, variables }),
@@ -109,7 +122,7 @@ export default function BookForm({ book, userId, onSuccess }: BookFormProps) {
   return (
     <Card sx={{ maxWidth: 600, mx: "auto", mt: 3 }}>
       <CardContent>
-        <Typography variant="h5" component="h2" gutterBottom sx={{ mb: 3 }}>
+        <Typography variant="h5" component="h2" gutterBottom sx={{ mb: 3, fontFamily: 'Roboto Mono, monospace' , fontWeight: 'bold', textAlign: 'center' }}>
           {book ? "Edit Book" : "Add New Book"}
         </Typography>
 
@@ -146,28 +159,40 @@ export default function BookForm({ book, userId, onSuccess }: BookFormProps) {
               type="number"
               value={publishedYear}
               onChange={(e) => setPublishedYear(e.target.value)}
-              placeholder="e.g., 2023"
+              placeholder="Published year"
               disabled={isLoading}
               fullWidth
               required
             />
 
-            <TextField
-              label="Genre"
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
-              placeholder="e.g., Science Fiction"
-              disabled={isLoading}
-              fullWidth
-              required
-            />
+
+            <FormControl fullWidth required disabled={isLoading}>
+              <Select
+                value={genre}
+                onChange={(e) => setGenre(e.target.value)}
+                displayEmpty
+              >
+                <MenuItem value="">
+                  <em>Select Genre</em>
+                </MenuItem>
+                <MenuItem value="Science Fiction">Science Fiction</MenuItem>
+                <MenuItem value="Fantasy">Fantasy</MenuItem>
+                <MenuItem value="Mystery">Mystery</MenuItem>
+                <MenuItem value="Romance">Romance</MenuItem>
+                <MenuItem value="Horror">Horror</MenuItem>
+                <MenuItem value="Non-Fiction">Non-Fiction</MenuItem>
+                <MenuItem value="Historical">Historical</MenuItem>
+              </Select>
+            </FormControl>
+
+
 
             <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
-              <Button type="submit" variant="contained" startIcon={<SaveIcon />} disabled={isLoading} fullWidth>
+              <Button type="submit" variant="contained" startIcon={<AddIcon />} disabled={isLoading} fullWidth>
                 {isLoading ? (
                   <>
                     <CircularProgress size={20} sx={{ mr: 1 }} />
-                    Saving...
+                    Adding...
                   </>
                 ) : book ? (
                   "Update Book"

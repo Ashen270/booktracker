@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
 import LogoutIcon from "@mui/icons-material/Logout"
+import Image from "next/image"
 
 export default function Navbar() {
   const { user, logout } = useAuth()
@@ -17,7 +18,13 @@ export default function Navbar() {
     <AppBar position="static" sx={{ mb: 3 }}>
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1, cursor: "pointer" }} onClick={() => router.push("/")}>
-          📚 Book Management
+          <Image
+            src="/booktrackerlogo.png"
+            alt="BookTracker Logo"
+            width={128}
+            height={128}
+            style={{ marginRight: 8, verticalAlign: "middle"}}
+          /> 
         </Typography>
 
         {user && (

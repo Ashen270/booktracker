@@ -51,8 +51,8 @@ export default function AuthForm({
             return
         }
 
-        if (password.length < 6) {
-            setError("Password must be at least 6 characters")
+        if (password.length < 8) {
+            setError("Password must be at least 8 characters")
             return
         }
 
@@ -81,11 +81,11 @@ export default function AuthForm({
             <Card sx={{ maxWidth: 400, width: "100%", mx: 2 }}>
                 <CardContent sx={{ pt: 4 }}>
                      <Image
-                        src="/BookTrackerLogo.png"
+                        src="/booktrackerlogo.png"
                         alt="BookTracker Logo"
                         width={256}
                         height={256}
-                        style={{ display: 'block', margin: '0 auto 16px', backgroundColor: '#fafafa' }}
+                        style={{ display: 'block', margin: '0 auto 16px', }}
                     />
                     <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: "center", mb: 1 }}>
                         {title}
@@ -146,7 +146,7 @@ export default function AuthForm({
                                 ) : isLogin ? (
                                     "Login"
                                 ) : (
-                                    "Register"
+                                    "Sign Up"
                                 )}
                             </Button>
                         </Stack>

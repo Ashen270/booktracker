@@ -39,10 +39,10 @@ export default function SearchBar({
           size="small"
           variant="outlined"
         />
-        <Button variant="contained" startIcon={<SearchIcon />} onClick={onSearch} disabled={isLoading}>
+        <Button variant="contained" startIcon={<SearchIcon />} onClick={onSearch} disabled={isLoading} sx={{height: "3rem"}}>
           Search
         </Button>
-        <Button variant="contained" color="success" startIcon={<AddIcon />} onClick={onAddBook}>
+        <Button variant="contained" color="success" startIcon={<AddIcon />} onClick={onAddBook}  sx={{height: "3rem",whiteSpace: "nowrap", display: "flex", alignItems: "center"}}>
           Add Book
         </Button>
       </Stack>
